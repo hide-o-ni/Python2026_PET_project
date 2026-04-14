@@ -19,7 +19,8 @@ def division (num1, num2):
     if num2 != 0:
         return float (num1 / num2)
     else:
-        print ("\nна 0 делить нельзя, умник")
+        return ("\nна 0 делить нельзя, умник")
+        
 
 def squared (num1, num2):
     print ("\n Первое число - это число для работы, второе число - степень")
@@ -62,11 +63,14 @@ def check_any_number ():
     while True:
         try:
             any_number = float (input())
-            if any_number:
+            if any_number or any_number==0 :
                 print ("\nпойдет, далее..")
                 return any_number
         except:
             print ("\n и вроде же не так много от тебя требуется..это по-твоему число? ")
+
+
+
         
 
 
@@ -102,9 +106,10 @@ def calculator ():
             if num1:
                 print ("\nВведи второе число для расчетов: ")
                 num2 =  check_any_number ()
-                if num2:
-                    result =  dir_calculator [task] (num1, num2)
-                    print (result)
+                result =  dir_calculator [task] (num1, num2)
+                print (result)
+                
+                        
         else:
             print ("\nу тебя лапки, да? неправильно!")
     
