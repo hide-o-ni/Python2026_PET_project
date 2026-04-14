@@ -21,16 +21,21 @@ def division (num1, num2):
     else:
         print ("\nна 0 делить нельзя, умник")
 
+def squared (num1, num2):
+    print ("\n Первое число - это число для работы, второе число - степень")
+    print ("\nВозведение в степень: ")
+    return pow (num1, num2)
+
+
 def squareroot (num1):
     #импорт проводится сразу при запуске модуля 
     #логично для одной операции вывести импорт в функцию
-    print ("\nКвадратный корень: ")
-    from math import sqrt
-    return float(math.sqrt (num1))
+    import math 
+    print ("\nКвадратный корень: ")    
+    result =  math.sqrt (num1)
+    return result
 
-def squared (num1, num2):
-    print ("\nВозведение в степень: ")
-    return pow (num1, num2)
+
 
 
 def menu ():
@@ -53,13 +58,16 @@ def menu ():
 
 
 
-def check_any_number (any_number):
-    if isinstance(any_number, (int, float)):
-        print ("\nпойдет, далее..")
-        return any_number
-    else:
-        print ("\n и вроде же не так много от тебя требуется..это по-твоему число? ")
-        return False
+def check_any_number ():
+    while True:
+        try:
+            any_number = float (input())
+            if any_number:
+                print ("\nпойдет, далее..")
+                return any_number
+        except:
+            print ("\n и вроде же не так много от тебя требуется..это по-твоему число? ")
+        
 
 
 
@@ -80,17 +88,23 @@ def calculator ():
         if task == 0:
             print ("\nой фсе")
             break
+        
         elif task == 6:
-            num1 = float (input( "\nВведи число для расчетов: "))
-            print ( squareroot (chech_any_number (num1)))
+            num1 = check_any_number ()
+            print ( squareroot (num1))
+            break
+
+
 
         if  task in dir_calculator:
-                    num1 = float (input("\nВведи первое число для расчетов: "))
-                    if check_any_number (num1):
-                        num2 = float (input("\nВведи второе число для расчетов: "))
-                        if check_any_number (num2):
-                            result =  dir_calculator [task] (num1, num2)
-                            print (result)
+            print ("\nВведи первое число для расчетов: ")
+            num1 = check_any_number ()
+            if num1:
+                print ("\nВведи второе число для расчетов: ")
+                num2 =  check_any_number ()
+                if num2:
+                    result =  dir_calculator [task] (num1, num2)
+                    print (result)
         else:
             print ("\nу тебя лапки, да? неправильно!")
     
